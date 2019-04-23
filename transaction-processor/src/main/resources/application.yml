@@ -1,0 +1,33 @@
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+      base-path: /
+      path-mapping:
+        prometheus: metricz
+  endpoint:
+    health:
+      show-details: always
+  info:
+    git:
+      enabled: true
+      mode: full
+---
+
+# H2 sProperties
+spring:
+  datasource:
+    driverClassName: org.h2.Driver
+    username: sa
+    password:
+    url: "jdbc:h2:mem:transactions"
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+  h2:
+    console:
+      enabled: true
+---
+
+# App Properties
+
