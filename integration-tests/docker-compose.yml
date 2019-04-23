@@ -1,0 +1,28 @@
+version: '2.4'
+
+services:
+
+  health-proxy:
+    image: debian:stretch
+    command: sleep infinity
+    depends_on:
+      transaction-processor:
+        condition: service_healthy
+
+  transaction-processor:
+    build: ../transaction-processor
+    environment:
+      JAVAOPTS_DEBUG: "-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5006"
+    ports:
+      - "8080"
+
+  integration-tests:
+    build: .
+
+    depends_on:
+      health-proxy:
+        condition: service_started
+
+    environment:
+      LOG_LEVEL: "${INTEGRATION_TESTS_LOG_LEVEL:-WARN}"
+      ROOT_LOG_LEVEL: "${INTEGRATION_TESTS_ROOT_LOG_LEVEL:-ERROR}"

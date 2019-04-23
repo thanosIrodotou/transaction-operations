@@ -1,0 +1,18 @@
+<configuration>
+  <property name="PATTERN" value="%date{ISO8601} %-5level [%thread] [%25.25logger{2}] - %message%n" />
+
+  <property name="LOG_LEVEL" value="${log.level:-INFO}" />
+  <property name="ROOT_LEVEL" value="${root.level:-INFO}" />
+
+  <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder>
+      <pattern>${PATTERN}</pattern>
+    </encoder>
+  </appender>
+
+  <logger name="com.form3" level="${LOG_LEVEL}" />
+
+  <root level="${ROOT_LEVEL}">
+    <appender-ref ref="CONSOLE" />
+  </root>
+</configuration>
