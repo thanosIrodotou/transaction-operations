@@ -7,7 +7,7 @@ String response
 
 When(~/^making a request to (.*)$/) { String service ->
   String url = "http://${service}"
-  response = getUrl(url)
+  response = getRequest(url)
 }
 
 Then(~/^response for .status is UP$/) { ->
