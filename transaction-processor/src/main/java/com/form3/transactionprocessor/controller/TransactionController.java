@@ -53,10 +53,10 @@ public class TransactionController {
 
     @PutMapping("/{id}")
     public Transaction update(@PathVariable String id, @RequestBody Transaction transaction) {
-        return transactionService.read(id).map(maybeTransaction -> {
-            return transactionService.update(maybeTransaction);
-        }).orElseThrow(() -> new TransactionNotFoundException(
-                "Could not find transaction with id: " + transaction.getId(), null));
+        return transactionService.read(id)
+                .map(maybeTransaction -> transactionService.update(transaction))
+                .orElseThrow(() -> new TransactionNotFoundException(
+                        "Could not find transaction with id: " + transaction.getId(), null));
     }
 
     @DeleteMapping

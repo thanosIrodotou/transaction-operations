@@ -14,6 +14,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -31,6 +34,7 @@ public class ChargesInformation {
 
     private String bearerCode;
     @ElementCollection(targetClass = SenderCharge.class, fetch = EAGER)
+    @LazyCollection(LazyCollectionOption.FALSE)
     @OneToMany(cascade = ALL)
     @JoinColumn(name = "sender_charges_id")
     private List<SenderCharge> senderCharges;
