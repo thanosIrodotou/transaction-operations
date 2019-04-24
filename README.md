@@ -35,11 +35,17 @@ so that the ITs are invoked with every `mvn clean install` build, like so:
 ```xml
 <executable>../docker-integration-tests.sh</executable>
 ```
+Alternatively, to run the tests manually, after building both modules with `mvn clean install` from the root dir, run:
+```bash
+./docker-integration-tests.sh
+```
 The downside of that is that startup of the tests is a bit slow as it depends on the resources supplied to  
 docker-machine (hence tests will be slower on low spec machines), but also requires a manual termination  
 of the containers when the tests are finished, hence you need to send a SIGTERM with ctrl-c.
 
-*p.s. the above was built and tested using a mac, so hopefully should work on unix systems with:   
+---
+
+***important note***: the above was built and tested using a mac, so hopefully should work on unix systems with:   
 java8,  
 maven3.6  
 docker-compose version 1.23.2, build 1110ad01 docker-py version: 3.6.0 CPython version: 3.6.6 OpenSSL version: OpenSSL 1.1.0h  27 Mar 2018   
