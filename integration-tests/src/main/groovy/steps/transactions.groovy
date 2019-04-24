@@ -36,6 +36,11 @@ Then(~/^response contains json$/) { String expectedJson ->
 }
 
 Then(~/^request to list transactions returns (.*) transaction$/) { int expected ->
-  listResponse = getUrl(serviceUrl)
+  listResponse = getRequest(serviceUrl)
   assert convertJson(listResponse).data.size() == expected
+}
+
+Then(~/^request to list transactions returns transaction with organisationId: (.*)$/) { String expectedId ->
+  listResponse = getRequest(serviceUrl)
+  assert convertJson(listResponse).data[0].organisationId == expectedId
 }

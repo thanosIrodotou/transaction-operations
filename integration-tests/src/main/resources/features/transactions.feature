@@ -99,3 +99,24 @@ Feature: transaction-processor CRUD endpoints
     """
     {"data":[]}
     """
+
+  Scenario: transaction-processor responds with updated transaction
+    Given a create request with data:
+    """
+    {
+      "type": "Payment",
+      "id": "4ee3a8d8-ca7b-4290-a52c-dd5b6165ec43",
+      "version": 0,
+      "organisation_id": "743d5b63-8e6f-432e-a8fa-c5d8d2ee5fcb"
+    }
+    """
+    When updating a request with data:
+    """
+    {
+      "type": "Payment",
+      "id": "4ee3a8d8-ca7b-4290-a52c-dd5b6165ec43",
+      "version": 0,
+      "organisation_id": "some-updated-org-id"
+    }
+    """
+    Then request to list transactions returns transaction with organisationId: some-updated-org-id
