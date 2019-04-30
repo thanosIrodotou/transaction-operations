@@ -5,7 +5,7 @@ A rest api to handle payment operations based on form3's exercise requirements.
 
 ### Design & Implementation
 * This repository primarily includes a simple REST API using SpringBoot and JPA which provides basic  
-CRUD operations on provided mocked data.  
+CRUD operations on provided mocked data. An API level design-doc is available [here](https://github.com/thanosIrodotou/transaction-operations/blob/master/api_design.md)  
 * The implementation follows the classic MVC (Controller>Service>Repository) pattern.
 * Data is persisted in the H2 Database Engine using Spring's automatic configuration and annotation based repositories.  
 The h2-console is available at: [http://localhost:8080/h2-console](http://localhost:8080/h2-console)
