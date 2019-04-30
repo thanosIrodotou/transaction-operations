@@ -3,7 +3,7 @@ package steps
 this.metaClass.mixin(cucumber.api.groovy.Hooks)
 this.metaClass.mixin(cucumber.api.groovy.EN)
 
-final String serviceUrl = "http://transaction-processor:8080/transactions"
+final String serviceUrl = "http://transaction-processor:8080/v1/transactions"
 String response
 
 Given(~/^a request to transaction-processor$/) { ->

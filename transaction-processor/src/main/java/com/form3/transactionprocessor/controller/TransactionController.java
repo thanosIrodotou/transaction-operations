@@ -19,7 +19,7 @@ import com.form3.transactionprocessor.model.exception.TransactionNotFoundExcepti
 import com.form3.transactionprocessor.service.TransactionService;
 
 @RestController
-@RequestMapping("/transactions")
+@RequestMapping("/v1/transactions")
 public class TransactionController {
 
     private TransactionService transactionService;
